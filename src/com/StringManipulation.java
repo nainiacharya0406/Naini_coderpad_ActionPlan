@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class StringManipulation {
 
-	
+
 	/*
 	 * public static Map<Character, Integer> common(String str) { Map<Character,
 	 * Integer> map = new HashMap<Character, Integer>(); for(int i=0; i<
@@ -56,7 +56,7 @@ public class StringManipulation {
 				ch = temp.getKey();
 			}
 		}
-		
+
 		System.out.println("Most repeated char is: "+ch +", " + count + " times");
 	}
 	//******Last non repeated character******
@@ -84,22 +84,20 @@ public class StringManipulation {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String str = "aabbbbccdekjk";
-		CommonImplementation impl = new CommonImplementation() {
-			
-			@Override
-			public Map<Character, Integer> common(String str) {
-				Map<Character, Integer> map = new HashMap<Character, Integer>();
-				for(int i=0; i< str.length(); i++) {
-					if(map.containsKey(str.charAt(i))) {
-						map.put(str.charAt(i), map.get(str.charAt(i))+1);
-					}else {
-						map.put(str.charAt(i), 1);
-					}
-				}
+		CommonImplementation impl = demo ->{ 
+			Map<Character, Integer> map =  new HashMap<Character, Integer>(); 
+			for(int i=0; i< demo.length(); i++) {
+				if(map.containsKey(demo.charAt(i))) { 
 
-				return map;
-			}
+					map.put(demo.charAt(i), map.get(demo.charAt(i))+1); 
+				}
+				else { 
+					map.put(demo.charAt(i), 1); 
+				} 
+			} 
+			return map; 
 		};
+
 		firstRepeated(str,impl);
 		firstNonRepeated(str, impl);
 		lastNonRepeated(str, impl);
