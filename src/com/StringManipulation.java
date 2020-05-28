@@ -3,6 +3,7 @@ package com;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class StringManipulation {
@@ -50,7 +51,7 @@ public class StringManipulation {
 		int count=0;
 		char ch = 0;
 		Map<Character, Integer> map = impl.common(str);
-		for(Map.Entry<Character, Integer> temp : map.entrySet()) {
+		for(Entry<Character, Integer> temp : map.entrySet()) {
 			if(count < temp.getValue()) {
 				count = temp.getValue();
 				ch = temp.getKey();
@@ -86,15 +87,13 @@ public class StringManipulation {
 		String str = "aabbbbccdekjk";
 		CommonImplementation impl = demo ->{ 
 			Map<Character, Integer> map =  new HashMap<Character, Integer>(); 
-			for(int i=0; i< demo.length(); i++) {
-				if(map.containsKey(demo.charAt(i))) { 
-
-					map.put(demo.charAt(i), map.get(demo.charAt(i))+1); 
+			for (Character ch : str.toCharArray()) {
+				if(map.containsKey(ch)) {
+					map.put(ch, map.get(ch)+1); 
+				}else {
+					map.put(ch, 1); 
 				}
-				else { 
-					map.put(demo.charAt(i), 1); 
-				} 
-			} 
+			}
 			return map; 
 		};
 
